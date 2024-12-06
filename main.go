@@ -74,6 +74,11 @@ func main() {
 
 func urlPassesFilter(parsed *url.URL, rawURL string) bool {
 
+	if parsed.Path == "" {
+		// No path, root url, return true
+		return true
+	}
+
 	// Comprobar palabras o patrones
 	if containsAny(rawURL, whitelistWords) {
 		return true
